@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>برای ستایش ❤</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Vazirmatn',Tahoma,sans-serif;background:linear-gradient(180deg,#0b1026,#1a1440 45%,#2b1055);color:#fff;min-height:100vh;overflow-x:hidden}
+#bgStars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bgstar{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.6;animation:tw 3s infinite}
+@keyframes tw{50%{opacity:.15}}
+.screen{position:relative;z-index:1;min-height:100vh;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;animation:fade .6s ease}
+.screen.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+h1{font-size:1.6rem;font-weight:900;margin-bottom:10px}
+h2{font-size:1.2rem;font-weight:700;color:#ffd3e0;margin-bottom:14px}
+p{line-height:2;font-size:1rem;color:#e8e6ff}
+.badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:4px 14px;border-radius:999px;font-size:.8rem;margin-bottom:16px}
+.card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);border-radius:22px;padding:26px 20px;max-width:420px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.btn{display:inline-block;margin-top:18px;background:linear-gradient(90deg,#ff5f8f,#ff2d78);color:#fff;border:none;padding:12px 26px;border-radius:999px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(255,45,120,.4)}
+.btn:active{transform:scale(.96)}
+.hint{margin-top:16px;font-size:.85rem;color:#bdb9ff;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.4}}
+.reasons{list-style:none;text-align:right;margin-top:8px}
+.reasons li{opacity:0;transform:translateY(8px);transition:.5s;padding:8px 6px;border-bottom:1px dashed rgba(255,255,255,.15);line-height:1.9}
+.reasons li.show{opacity:1;transform:none}
+#moreLine{display:none;margin-top:12px;color:#ffe28a}
+#sky{position:relative;width:100%;max-width:420px;height:260px;border-radius:22px;background:radial-gradient(circle at 50% 120%,#3a1c71,#0d0b2a);border:1px solid rgba(255,255,255,.2);overflow:hidden;cursor:pointer;margin-top:10px}
+.star{position:absolute;font-size:18px;transform:translate(-50%,-50%);animation:pop .4s ease,tw 2.5s infinite .4s}
+@keyframes pop{from{transform:translate(-50%,-50%) scale(0)}to{transform:translate(-50%,-50%) scale(1)}}
+.promises{list-style:none;text-align:right;line-height:2.4}
+.qbtns{display:flex;gap:12px;justify-content:center;margin-top:18px}
+.big-heart{font-size:70px;cursor:pointer;user-select:none;display:inline-block;transition:.15s}
+.big-heart:active{transform:scale(1.25)}
+footer{margin-top:22px;font-size:.8rem;color:#9d97d8}
+#soundBtn{position:fixed;top:12px;left:12px;z-index:5;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:50%;width:42px;height:42px;font-size:18px;cursor:pointer;color:#fff}
+#toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#ff2d78;padding:10px 22px;border-radius:999px;font-weight:700;opacity:0;transition:.4s;z-index:10;pointer-events:none}
+#toast.on{opacity:1}
+.float{position:fixed;z-index:9;pointer-events:none;animation:rise 1.2s ease forwards;font-size:22px}
+@keyframes rise{to{transform:translateY(-120px);opacity:0}}
+.letter{text-align:right;line-height:2.3}
+.sig{margin-top:14px;color:#ffd3e0;font-weight:700}
+</style>
+</head>
+<body>
+<button id="soundBtn">🔊</button>
+<div id="bgStars"></div>
+<div id="toast"></div>
+
+<section class="screen active" id="s0">
+  <h1>تقدیم به ستایشِ عزیزم ❤</h1>
+  <p>به نامِ تو ستایش، که قلبم به نامِ توست…</p>
+  <div class="hint">هر جای صفحه را لمس کن</div>
+</section>
+
+<section class="screen" id="s1">
+  <div class="card">
+    <span class="badge">حرفِ دل</span>
+    <h2>یک نامهٔ کوچک، برای ستایش</h2>
+    <div class="letter">ستایشِ من،<br>دوستت دارم؛ امروز، فردا، تا همیشه…</div>
+    <div class="sig">امضا: همسری که عاشقِ ستایش است</div>
+    <button class="btn" onclick="go(2)">ادامه بده ❤</button>
+  </div>
+</section>
+
+<section class="screen" id="s2">
+  <div class="card" onclick="nextReason()">
+    <span class="badge">فهرستِ بی‌پایان</span>
+    <h2>پنج دلیل که دیوانه‌ات هستم</h2>
+    <div class="hint" id="reasonHint">با هر لمس، یک دلیل روشن می‌شود…</div>
+    <ul class="reasons">
+      <li>۱. خنده‌هایت؛ میان‌بُرِ حالِ خوبِ من است.</li>
+      <li>۲. صبوریِ تو، امن‌ترین جای دنیاست.</li>
+      <li>۳. با تو، چایِ ساده هم طعمِ عسل می‌دهد.</li>
+      <li>۴. وقتی صدایم می‌زنی، همه‌چیز سرِ جای خودش است.</li>
+      <li>۵. چون فقط همسرم نیستی؛ تو ستایشِ تمامِ لحظه‌های منی.</li>
+    </ul>
+    <div id="moreLine">یک چیزِ دیگر هم هست… ✨</div>
+    <button class="btn" id="reasonBtn" style="display:none" onclick="event.stopPropagation();go(3)">ادامه ❤</button>
+  </div>
+</section>
+
+<section class="screen" id="s3">
+  <div class="card">
+    <span class="badge">آسمانِ ما</span>
+    <h2>آسمانِ ستایش</h2>
+    <p>اسمِ تو از جنسِ ستاره‌هاست… صفحه را لمس کن تا ستاره بکاری و آسمانِ زندگیِ مشترکمان را پر کنی ✨</p>
+    <div id="sky"></div>
+    <div class="hint" id="skyHint">ستاره‌ها: ۰</div>
+    <button class="btn" id="skyBtn" style="display:none" onclick="go(4)">دستت گرم است! ادامه ❤</button>
+  </div>
+</section>
+
+<section class="screen" id="s4">
+  <div class="card">
+    <span class="badge">از ته دل</span>
+    <h2>به تو قول می‌دهم</h2>
+    <ul class="promises">
+      <li>❤ قول می‌دهم بیشتر بغلت کنم.</li>
+      <li>❤ قول می‌دهم شنونده‌ترین آدمِ دنیا برایت باشم.</li>
+      <li>❤ قول می‌دهم در روزهای سخت، محکم‌ترین تکیه‌گاهت باشم.</li>
+      <li>❤ و قول می‌دهم هر روز، بیشتر از دیروز دوستت داشته باشم.</li>
+    </ul>
+    <button class="btn" onclick="go(5)">حالا یک سؤالِ مهم… 🤔</button>
+  </div>
+</section>
+
+<section class="screen" id="s5">
+  <div class="card">
+    <span class="badge">لحظهٔ حساس!</span>
+    <h2>یک سؤالِ خیلی مهم</h2>
+    <p>اجازه می‌دهی حالت را خوب کنم؟</p>
+    <div class="qbtns">
+      <button class="btn" onclick="pop(800);go(6)">آره! ❤</button>
+      <button class="btn" style="background:linear-gradient(90deg,#5a5a8a,#3d3d6b)" onclick="noClick()">نه 🙃</button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="s6">
+  <div class="card">
+    <h2>ستایشِ من ❤</h2>
+    <p>دوستت دارم؛ امروز، فردا، تا همیشه…</p>
+    <div class="big-heart" onclick="hug(event)">❤</div>
+    <div id="hugLine">برای بغلِ مجازی، قلب را لمس کن — تا الان: ۰ بغل 🤗</div>
+    <button class="btn" onclick="restart()">یک بارِ دیگر، از اول ❤</button>
+    <footer>ساخته‌شده با ❤ فقط برای ستایش</footer>
+  </div>
+</section>
+
+<script>
+const screens=[...document.querySelectorAll('.screen')];let cur=0;
+function go(i){screens[cur].classList.remove('active');cur=i;screens[cur].classList.add('active');window.scrollTo(0,0);}
+function faNum(n){return String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);}
+let soundOn=true,ctx;
+function pop(f){if(!soundOn)return;try{ctx=ctx||new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=f||600;o.type='sine';g.gain.setValueAtTime(.08,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.25);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.26);}catch(e){}}
+document.getElementById('soundBtn').onclick=()=>{soundOn=!soundOn;document.getElementById('soundBtn').textContent=soundOn?'🔊':'🔇';};
+document.getElementById('s0').onclick=()=>{pop(520);go(1);};
+const reasons=[...document.querySelectorAll('.reasons li')];let rShown=0;
+function nextReason(){if(rShown<reasons.length){reasons[rShown].classList.add('show');rShown++;pop(450+rShown*70);if(rShown===reasons.length){document.getElementById('moreLine').style.display='block';document.getElementById('reasonBtn').style.display='inline-block';document.getElementById('reasonHint').style.display='none';}}}
+const sky=document.getElementById('sky');let stars=0;
+sky.addEventListener('click',e=>{const r=sky.getBoundingClientRect();const s=document.createElement('span');s.className='star';s.textContent='✨';s.style.left=(e.clientX-r.left)+'px';s.style.top=(e.clientY-r.top)+'px';sky.appendChild(s);stars++;pop(700+Math.random()*300);document.getElementById('skyHint').textContent='ستاره‌ها: '+faNum(stars);if(stars>=12){document.getElementById('skyBtn').style.display='inline-block';}});
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),1800);}
+function noClick(){toast('می‌دونستم آخرش آره می‌گی 🙃');pop(300);setTimeout(()=>go(6),1000);}
+let hugs=0;
+function hug(e){hugs++;pop(300+hugs*10);document.getElementById('hugLine').textContent='برای بغلِ مجازی، قلب را لمس کن — تا الان: '+faNum(hugs)+' بغل 🤗';const f=document.createElement('div');f.className='float';f.textContent=['🤗','❤','✨'][hugs%3];f.style.left=e.clientX+'px';f.style.top=e.clientY+'px';document.body.appendChild(f);setTimeout(()=>f.remove(),1200);}
+function restart(){rShown=0;reasons.forEach(li=>li.classList.remove('show'));document.getElementById('moreLine').style.display='none';document.getElementById('reasonBtn').style.display='none';document.getElementById('reasonHint').style.display='block';stars=0;sky.innerHTML='';document.getElementById('skyBtn').style.display='none';document.getElementById('skyHint').textContent='ستاره‌ها: ۰';hugs=0;document.getElementById('hugLine').textContent='برای بغلِ مجازی، قلب را لمس کن — تا الان: ۰ بغل 🤗';go(0);}
+const bg=document.getElementById('bgStars');for(let i=0;i<60;i++){const b=document.createElement('div');b.className='bgstar';b.style.left=Math.random()*100+'%';b.style.top=Math.random()*100+'%';b.style.animationDelay=Math.random()*3+'s';bg.appendChild(b);}
+</script>
+</body>
+</html>
